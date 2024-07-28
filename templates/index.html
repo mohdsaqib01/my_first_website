@@ -17,22 +17,50 @@
             crossorigin="anonymous"
         />
         <style>
-            main{
-                display: flex;
-                place-items: center;
-                height: 100dvh;
-            }
-                
-
+           
             
         </style>
     </head>
 
     <body>
         <header>
-            <!-- place navbar here -->
+            <main>
+
+                {% include 'components/menu.html' %}
+                <h1>welcome to my first project</h1>
+                <div>
+                    <form action="{% url 'add_task' %}" method="post">
+                        {% csrf_token %}
+                        {{form.as_p}}
+                        <button>submit</button>
+
+                    </form>
+                </div>
+                <div>
+
+                    <ul class="list-group mt-4">
+                        
+                        {% for item in tasks %}
+                        {% if not item.completed %}
+                            <li class="list-group-item d-flex">
+                                <!-- {{item.name}}//double curly braces are used for showing the value of a variable// -->
+                                {{item.name}}
+                                <a class="nav-link ms-auto" href="{% url 'complete' item.id %}">delete</a>
+                            </li>
+                            {% else %}
+                            <li class="list-group-item d-flex">
+                             <del> {{item.name}}</del>
+                            </li>
+                            {% endif %}
+                        {% empty %}
+                            <li class="list-group-item">no task added</li>
+                        {% endfor %}
+                            
+                    </ul>
+                </div>
+            </main>
         </header>
-        <main> welcome to my first website</main>
+
         <footer>
             <!-- place footer here -->
         </footer>
