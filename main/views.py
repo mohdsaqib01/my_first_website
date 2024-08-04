@@ -63,7 +63,7 @@ def movie_add_view(request):
         if form.is_valid():
             form.save()
             return redirect('view_movies')
-        return render(request,'movies/add.html',{'form':form}
+    return render(request,'movies/add.html',{'form':form}
                       )
     
 def movie_edit_view(request, id):
@@ -82,7 +82,8 @@ def movie_delete_view(request, id):
     movie.delete()
     return redirect('view_movies')
 
-def search_movie(request):
+def movie_search_view(request):
+    return render(request,'movies/search.html')
 
 
     
