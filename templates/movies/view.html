@@ -48,6 +48,12 @@
                             <div class="card-body">
                                 <h4 class="card-title">{{movie.title}}</h4>
                                 <p class="card-text">{{movie.rating}}</p>
+                                <div class="btn-group d-flex" role="group" aria-label="Basic outlined example">
+                                    <a href="{% url 'edit_movie' movie.id %}" class="btn btn-outline-secondary">Edit</a>
+                                    <a href="{% url 'delete_movie' movie.id %}" class="btn btn-outline-danger" >Delete</a>
+                                    
+                                  </div>
+                                
                             </div>
                            </div>
                         </div>
